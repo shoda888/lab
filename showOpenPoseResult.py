@@ -81,7 +81,7 @@ class JOINT(Enum):
 
 #jointPairs = [(1,2), (1,5), (2,3), (3,4), (5,6), (6,7), (1,8), (8,9), (9,10), (1,11), (11,12), (12,13), (1,0), (0,15), (15,17), (0,14), (14,16)]
 jointPairs = [(1,2), (1,5), (2,3), (3,4), (5,6), (6,7), (1,8), (8,9), (8,12), (9,10), (10,11), (11,24), (11,22), (22,23), (12,13), (13,14), (14,21),(14,19),(19,20), (0,1), (0,15), (0,15), (0,16), (17,15), (18,16)]
-colors = [(255.,     0.,    85.), (255.,     0.,     0.), (255.,    85.,     0.), (255.,   170.,     0.), (255.,   255.,     0.), (170.,   255.,     0.), (85.,   255.,     0.), (0.,   255.,     0.), (0.,   255.,    85.), (0.,   255.,   170.), (0.,   255.,   255.), (0.,   170.,   255.), (0.,    85.,   255.), (0.,     0.,   255.), (255.,     0.,   170.), (170.,     0.,   255.), (255.,     0.,   255.), (85.,     0.,   255.)]
+colors = [(255.,     0.,    85.), (255.,     0.,     0.), (255.,    85.,     0.), (255.,   170.,     0.), (255.,   255.,     0.), (170.,   255.,     0.), (85.,   255.,     0.), (0.,   255.,     0.), (0.,   255.,    85.), (0.,   255.,   170.), (0.,   255.,   255.), (0.,   170.,   255.), (0.,    85.,   255.), (0.,     0.,   255.), (255.,     0.,   170.), (170.,     0.,   255.), (255.,     0.,   255.), (85.,     0.,   255.), (255.,    85.,   85.), (255.,    85.,   170.), (255.,    85.,     255.), (255.,    170.,   0.), (255.,    170.,   85.), (255.,    170.,   170.), (255.,    170.,   255.)]
 
 
 jsonFileList = glob.glob(sys.argv[2]+"/*")
@@ -94,7 +94,6 @@ cv2.namedWindow("img", cv2.WINDOW_NORMAL) #imgウィンドウのサイズを変�
 for i,imgFileName in enumerate(imageFileList):
 
     frame = cv2.imread(imgFileName,cv2.IMREAD_COLOR)
-    print(type(frame))
 
 
     jsonFile = open(jsonFileList[i] , 'r')
@@ -131,8 +130,7 @@ for i,imgFileName in enumerate(imageFileList):
    
 
         kpt = np.array(data[Tag]).reshape((25, 3))
-        for p in jointPairs:
-            j = 0
+        for j, p in enumerate(jointPairs):
             pt1 = tuple(list(map(int, kpt[p[0], 0:2])))
             c1 = kpt[p[0], 2]
             pt2 = tuple(list(map(int, kpt[p[1], 0:2])))
@@ -142,10 +140,9 @@ for i,imgFileName in enumerate(imageFileList):
             # 信頼度0.0の関節は無視
             if c1 == 0.0 or c2 == 0.0:
                 continue
-            color = tuple(list(map(int, colors[2])))
-
+            color = tuple(list(map(int, colors[j])))
             frame = cv2.line(frame, pt1, pt2, color, 3)
-            j += 1
+            
         cv2.putText(frame,str(peopleID),(int(poseData[JOINT.Neck.value*3]),int(poseData[JOINT.Neck.value*3+1])),cv2.FONT_HERSHEY_PLAIN,2,(255,255,0))
         peopleID += 1
     cv2.imshow("img",frame)
