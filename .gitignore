@@ -15,5 +15,6 @@ lstm/1_Chickenpox/0520exData/test/depth
 lstm/1_Chickenpox/0520exData/training/depth
 *.zip
 *.mat
+lstm/1_Chickenpox/0520exData/test.mkv
 2019
 .DS_Store
