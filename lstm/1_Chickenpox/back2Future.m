@@ -2,9 +2,19 @@
 clear
 %% 系列データの読み込み
 
-v3 = readmatrix("/Users/shoda/lab/lstm/1_Chickenpox/0520exData/training/0/pos.csv");
+v3 = readmatrix("0520exData/training/0/pos.csv");
 data = lowpass(v3(:,2:97), 0.3);
 data = data';
+time = readmatrix("timeindex.csv");
+
+figure
+plot(data(1:4,:)');
+ylabel("Xvalue")
+title("Plevis")
+
+h = gca;
+h.FontName = 'Meiryo UI';
+h.FontSize = 14;
 
 %% 学習データとテストデータの分割
 numTimeStepsTrain = floor(0.8 * size(data, 2));
@@ -88,9 +98,9 @@ disp(rmse)
 
 figure
 subplot(2, 1, 1)
-plot(idxTest, YTest(1,:))
+plot(time(idxTest), YTest(8,:))
 hold on
-plot(idxTest, YPred(1,:),'.-')
+plot(time(idxTest), YPred(8,:),'.-')
 hold off
 legend(["観測値" "予測値"])
 ylabel("value")
@@ -101,7 +111,7 @@ h.FontName = 'Meiryo UI';
 h.FontSize = 14;
 
 subplot(2, 1, 2)
-stem(idxTest, YPred(1,:) - YTest(1,:))
+stem(time(idxTest), YPred(8,:) - YTest(1,:))
 ylabel("予測誤差")
 title("RMSE = " + rmse)
 

@@ -176,7 +176,3 @@ subplot(2, 1, 2)
 stem(time(idxTest), YPred - YTest)
 ylabel("—\‘ªŒë·")
 title("RMSE = " + rmse)
-
-h = gca;
-h.FontName = 'Meiryo UI';
-h.FontSize = 14;
