@@ -1,0 +1,18 @@
+signal_processing/0331v2Data
+signal_processing/0331v2posData
+signal_processing/0331v3Data
+signal_processing/0331v3posData
+signal_processing/matlab_code/0331v3Data
+signal_processing/matlab_code/0331v3ForwardData
+signal_processing/matlab_code/0331v3OriginData
+signal_processing/matlab_code/0331v3TrimData
+signal_processing/matlab_code/eps
+signal_processing/matlab_code/svg
+signal_processing/pycode/photo
+lstm/2_UCI/__MACOSX
+lstm/2_UCI/UCI HAR Dataset
+*zip
+*.mat
+KeiHirano
+2019
+.DS_Store
