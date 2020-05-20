@@ -2,7 +2,7 @@
 clear
 %% Œn—ñƒf[ƒ^‚Ì“Ç‚İ‚İ
 
-v3 = readmatrix("pos.csv");
+v3 = readmatrix("/Users/shoda/lab/lstm/1_Chickenpox/0520exData/training/0/pos.csv");
 data = lowpass(v3(:,2:97), 0.3);
 data = data';
 
