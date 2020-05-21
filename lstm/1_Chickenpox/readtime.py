@@ -1,7 +1,7 @@
 import pandas as pd
 
 def showtime(x):
-    return str(x)[8:10] +':'+ str(x)[10:12] +':'+ str(x)[12:14]
+    return str(x)[8:10] +':'+ str(x)[10:12] +':'+ str(x)[12:14] +'.'+ str(x)[14:17]
 
 df = pd.read_csv('0520exData/training/0/pos.csv', header=None)
 print(len(df))
