@@ -6,7 +6,7 @@ load('timeindex.mat')
 %% 系列データの読み込み
 timeindex = timeindex';
 v3 = readmatrix("0520exData/training/0/pos.csv");
-data = lowpass(v3(:,2:97), 0.3);
+data = lowpass(v3(:,2:97), 0.1);
 data = data';
 
 figure
@@ -19,7 +19,7 @@ h.FontSize = 14;
 
 %% 学習データとテストデータの分割
 numTimeStepsTrain = floor(0.8 * size(data, 2));
-futurepoint = 30; %1秒後
+futurepoint = 60; %1秒後
 
 XTrain = data(:, 1:numTimeStepsTrain);
 YTrain = data(:, 1+futurepoint:numTimeStepsTrain+futurepoint);
