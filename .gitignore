@@ -9,10 +9,13 @@ signal_processing/matlab_code/0331v3TrimData
 signal_processing/matlab_code/eps
 signal_processing/matlab_code/svg
 signal_processing/pycode/photo
+signal_processing/matlab_code/heatmap.png
 lstm/2_UCI/__MACOSX
 lstm/2_UCI/UCI HAR Dataset
 lstm/1_Chickenpox/0520exData/test/depth
 lstm/1_Chickenpox/0520exData/training/depth
+lstm/1_Chickenpox/0520exData/training/pos
+lstm/1_Chickenpox/photo
 *.zip
 *.mat
 *.mkv
