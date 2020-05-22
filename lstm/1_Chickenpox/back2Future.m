@@ -19,7 +19,7 @@ h.FontSize = 14;
 
 %% 学習データとテストデータの分割
 numTimeStepsTrain = floor(0.8 * size(data, 2));
-futurepoint = 60; %1秒後
+futurepoint = 30; %1秒後
 
 XTrain = data(:, 1:numTimeStepsTrain);
 YTrain = data(:, 1+futurepoint:numTimeStepsTrain+futurepoint);
