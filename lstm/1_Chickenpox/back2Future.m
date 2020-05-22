@@ -135,3 +135,17 @@ h.FontName = 'Meiryo UI';
 h.FontSize = 14;
 
 
+%% 現在の観測値・１０分後の予測値の可視化
+
+figure
+plot(timeindex(idxTest), data(jointindex, numTimeStepsTrain+1:end-futurepoint))
+hold on
+plot(timeindex(idxTest), YPred(jointindex,:),'.-')
+hold off
+legend(["観測値" "予測値"])
+ylabel("value")
+title("現在の観測地と予測値）")
+
+h = gca;
+h.FontName = 'Meiryo UI';
+h.FontSize = 14;
